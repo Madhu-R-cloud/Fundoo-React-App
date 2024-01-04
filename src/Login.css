@@ -1,0 +1,70 @@
+.login-body-ctn {
+  display: flex;
+  width: 100%;
+  height: 550px; /* Adjust the height as needed */
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 27%;
+  height: 450px; /* Adjust the height as needed */
+  margin-left: 35%;margin-top: 8%;
+  padding: 10px;
+  border: 1px solid rgb(147, 161, 165);
+  border-radius: 10px;
+}
+
+.header-ctn-fundo {
+ 
+ align-items: center;
+ 
+}
+
+.header-ctn-fundo h2{
+ margin-left: 35%;
+ color: orange;
+}
+
+.header-ctn-fundo h3{
+  margin-left: 35%;
+
+ }
+ 
+ .header-ctn-fundo p{
+  margin-left: 25%;
+
+ }
+ 
+
+.username-ctn {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.username-ctn .MuiTextField-root {
+  margin-top: 20px;
+}
+
+.btn-login {
+  display: flex;
+  margin-top: 50px;
+  justify-content: space-between;
+}
+
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  font-size: 14px;
+  justify-content: center;
+}
+
+.footer p {
+  margin-top: 25px;
+  margin-right: 60px;
+  margin-left: 40px;
+}
