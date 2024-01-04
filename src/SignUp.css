@@ -1,0 +1,96 @@
+.login-body-ctn {
+    display: flex;
+    width: 100%;
+    flex-direction: row; 
+    align-items: center; 
+    margin-top: 25px;
+    height: 950px;
+}
+
+.register-form {
+    display: flex;
+    width: 100%; 
+    max-width: 800px; 
+    margin: 20px auto; 
+    padding: 20px; 
+    border: 1px solid rgb(147, 161, 165);
+    border-radius: 10px; 
+}
+
+.body-left-ctn {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 70%;
+}
+
+.body-right-cnt {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    flex: 1;
+    margin-top: 10px; 
+}
+.body-right-cnt span{
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.text-header {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-left: 20px; 
+
+}
+
+.name-fields {
+    display: flex;
+    width: 90%;
+    margin-left: 20px;
+    margin-top: 20px;
+
+}
+
+.name-fields .MuiTextField-root {
+   
+    margin-right: 10px;
+    
+}
+
+
+.username-field {
+    display: flex;
+    width: 81%; 
+    margin-top: 20px; 
+    margin-left: 20px; 
+}
+
+
+.password-fields {
+    display: flex;
+    width: 85%; 
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 10px;
+    
+}
+
+.password-fields  .MuiTextField-root {
+    margin-right: 20px;
+}
+.register-button {
+    display: flex;
+    width: 125%;
+    margin-left: 20px; 
+    margin-top: 20px;
+    margin-right: 30px; 
+    justify-content: space-between;
+}
+
+.signup-logo{
+    display: flex;
+    margin-top: 50%;
+   height: 200px;
+   width: 200px;     
+}

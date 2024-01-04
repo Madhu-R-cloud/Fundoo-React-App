@@ -1,10 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import SignUpComponent from './components/SignUpComponent';
+import LoginComponent from './components/LoginComponent';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginComponent />} />
+        <Route path="/signup" element={<SignUpComponent />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+// Use createRoot instead of ReactDOM.render
 root.render(
   <React.StrictMode>
     <App />
