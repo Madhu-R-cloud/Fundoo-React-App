@@ -11,7 +11,9 @@ function Navigation() {
         <li>
           <Link to="/signup">SignUp</Link>
         </li>
-        
+        <li>
+          <Link to="/home">Home</Link>
+        </li>
       </ul>
     </nav>
   );

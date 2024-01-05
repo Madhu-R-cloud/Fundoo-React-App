@@ -1,14 +1,14 @@
-.login-body-ctn {
+/* .login-body-ctn {
   display: flex;
   width: 100%;
-  height: 550px; /* Adjust the height as needed */
+  height: 550px; 
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
   width: 27%;
-  height: 450px; /* Adjust the height as needed */
+  height: 450px; 
   margin-left: 35%;margin-top: 8%;
   padding: 10px;
   border: 1px solid rgb(147, 161, 165);
@@ -67,4 +67,46 @@
   margin-top: 25px;
   margin-right: 60px;
   margin-left: 40px;
+} */
+
+
+/*
+  Based on TailwindCSS recommendations,
+  consider using classes instead of the `@apply` directive
+  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
+*/
+.login-body-ctn {
+  @apply flex w-full h-[550px];
+  /* Adjust the height as needed */
+}
+.login-form {
+  @apply flex flex-col w-[27%] h-[450px] border ml-[35%] mt-[8%] p-2.5 rounded-[10px] border-solid border-[rgb(147,161,165)];
+  /* Adjust the height as needed */
+}
+.header-ctn-fundo {
+  @apply items-center;
+}
+.header-ctn-fundo h2 {
+  @apply text-[orange] ml-[35%];
+}
+.header-ctn-fundo h3 {
+  @apply ml-[35%];
+}
+.header-ctn-fundo p {
+  @apply ml-[25%];
+}
+.username-ctn {
+  @apply flex flex-col w-full mt-2.5;
+}
+.username-ctn .MuiTextField-root {
+  @apply mt-5;
+}
+.btn-login {
+  @apply flex justify-between mt-[50px];
+}
+.footer {
+  @apply flex flex-row w-full text-sm justify-center;
+}
+.footer p {
+  @apply ml-10 mr-[60px] mt-[25px];
 }

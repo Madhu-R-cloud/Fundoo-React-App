@@ -1,4 +1,4 @@
-.login-body-ctn {
+/* .login-body-ctn {
     display: flex;
     width: 100%;
     flex-direction: row; 
@@ -93,4 +93,50 @@
     margin-top: 50%;
    height: 200px;
    width: 200px;     
-}
+} */
+
+/*
+  Based on TailwindCSS recommendations,
+  consider using classes instead of the `@apply` directive
+  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
+*/
+.login-body-ctn {
+    @apply flex w-full flex-row items-center h-[950px] mt-[25px];
+  }
+  .register-form {
+    @apply flex w-full max-w-[800px] border mx-auto my-5 p-5 rounded-[10px] border-solid border-[rgb(147,161,165)];
+  }
+  .body-left-ctn {
+    @apply flex flex-col w-[70%] mt-5;
+  }
+  .body-right-cnt {
+    @apply flex flex-col w-[30%] flex-1 mt-2.5;
+  }
+  .body-right-cnt span {
+    @apply text-xl ml-5;
+  }
+  .text-header {
+    @apply flex w-full flex-col ml-5;
+  }
+  .name-fields {
+    @apply flex w-[90%] ml-5 mt-5;
+  }
+  .name-fields .MuiTextField-root {
+    @apply mr-2.5;
+  }
+  .username-field {
+    @apply flex w-[81%] ml-5 mt-5;
+  }
+  .password-fields {
+    @apply flex w-[85%] ml-5 mr-2.5 mt-5;
+  }
+  .password-fields .MuiTextField-root {
+    @apply mr-5;
+  }
+  .register-button {
+    @apply flex w-[125%] justify-between ml-5 mr-[30px] mt-5;
+  }
+  .signup-logo {
+    @apply flex h-[200px] w-[200px] mt-[50%];
+  }
+  
