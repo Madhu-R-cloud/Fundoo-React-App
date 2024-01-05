@@ -1,100 +1,110 @@
-import  React, { useState }  from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { SignUp } from "../../src/SignUp.css";
-import logo from '../assets/GoogleImg.jpg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
 
+import logo from '../assets/GoogleImg.jpg';
+import { SignUp } from "../../src/SignUp.css";
 
 export function SignUpComponent() {
+  const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    fullName: "",
-    password: "",
-    confirmPassword: "",
+  const [userDetails, setUserDetails] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    // confirmPassword: ''
   });
 
+  useEffect(() => {
+    // console.log(userDetails);
+  }, [userDetails]);
+
   const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value,
+    const { name, value } = e.target;
+    setUserDetails(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  }
+
+  const createUser = () => {
+    axios.post("https://fundoonotes.incubation.bridgelabz.com/api/user/userSignUp", {
+      "firstName": userDetails.firstName,
+      "lastName": userDetails.lastName,
+      "service": "advance",
+      "email": userDetails.email,
+      "password": userDetails.password
+    }).then(res => {
+      console.log(res);
+      navigate("/home");
+    }).catch(error => {
+      // Handle error or navigate to error page
+      // navigate("/err");
     });
-  };
-
-  const handleRegister = async () => {
-    try {
-     
-      const apiUrl = "https://fundoonotes.incubation.bridgelabz.com/explorer/#!/user/user_userSignUp";
-
-      const response = await fetch(apiUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to register");
-      }
-
-      console.log("Registration successful");
-    } catch (error) {
-      
-      console.error("Registration failed", error);
-    }
-  };
-
+  }
 
   return (
     <>
       <div className="login-body-ctn">
-         <div className="register-form">
+        <div className="register-form">
           <div className="body-left-ctn">
             <div className="text-header">
-              <span style={{ color: "yellow", fontSize: "36px" }}>Fundoo</span>
-
-              <span
-                style={{ color: "black", marginTop: "30px", fontSize: "25px" }}
-              >
+              <span style={{ color: "orange", fontSize: "36px" }}>Fundoo</span>
+              <span style={{ color: "black", marginTop: "30px", fontSize: "25px" }}>
                 Create your Fundo Account
               </span>
             </div>
             <div className="name-fields">
               <TextField
                 id="firstname"
+                name="firstName"
                 label="FirstName"
-                variant="outlined" 
+                value={userDetails.firstName}
+                onChange={handleInputChange}
                 required
               />
               <TextField
                 id="lastname"
+                name="lastName"
                 label="LastName"
-                variant="outlined"
+                value={userDetails.lastName}
+                onChange={handleInputChange}
                 required
               />
             </div>
             <div className="username-field">
-              <TextField fullWidth label="FullName" id="fullWidth" required />
-           
+              <TextField
+                label="FullName"
+                id="email"
+                name="email"
+                value={userDetails.email}
+                onChange={handleInputChange}
+                required
+              />
             </div>
             <span style={{ marginLeft: "35px", marginTop: "10px" }}>
               You can use letters numbers & symbols
             </span>
-
             <div className="password-fields">
               <TextField
-                id="outlined-basic"
+                id="password"
+                name="password"
                 label="Password"
-                variant="outlined"
+                type="password"
+                value={userDetails.password}
+                onChange={handleInputChange}
                 required
               />
               <TextField
-                id="outlined-basic"
+                id="confirmpassword"
+                name="confirmPassword"
                 label="Confirm"
-                variant="outlined"
+                type="password"
+                value={userDetails.confirmPassword}
+                onChange={handleInputChange}
                 required
               />
             </div>
@@ -102,17 +112,15 @@ export function SignUpComponent() {
               Use 8 or more characters with a mix of letters, numbers & symbols
             </span>
             <div className="register-button">
-            <Link to="/">Sign In Instead</Link>
-              <Button variant="contained">Register</Button>;
+              <Link to="/">Sign In Instead</Link>
+              <Button variant="contained" onClick={createUser}>Register</Button>
             </div>
-        
           </div>
           <div className="body-right-cnt">
-              <img src={logo} className="signup-logo" alt="logo" />
-          <span>One Account. All of Fundo working for you</span>
+            <img src={logo} className="signup-logo" alt="logo" />
+            <span>One Account. All of Fundo working for you</span>
+          </div>
         </div>
-        </div>
-       
       </div>
     </>
   );

@@ -5,6 +5,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import SignUpComponent from './components/SignUpComponent';
 import LoginComponent from './components/LoginComponent';
+import HomeComponent from './components/HomeComponent';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginComponent />} />
         <Route path="/signup" element={<SignUpComponent />} />
+        <Route path='/home' element={<HomeComponent />} />
       </Routes>
     </BrowserRouter>
   );
