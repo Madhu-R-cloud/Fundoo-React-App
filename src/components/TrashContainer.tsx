@@ -14,24 +14,42 @@ interface NoteObj {
 
 function TrashContainer () {
     const [trashList, setTrashList] = useState<NoteObj[]>([]);
+
+
     useEffect( () => {
         fetchTrash();
-    }, [] )
+    },[])
 
      const fetchTrash = async () => {
         const result = await getTrashNotesList();
         setTrashList(result);
     }
 
-    return (<>
-        <div className="grid grid-cols-4 ml-[250px] mt-[100px]" >
-            {trashList.map( (val:any) => {
-                return (<>
-                    <NoteCardComponent data={val} updatedList={()=>{}} />
-                </>)
-            } )}
-        </div>
-    </>)
+
+    const updateNotesList = (noteObj: NoteObj, action: string) => {
+        if (action === "remove") {
+        
+            // const res = trashList.filter((ele) => ele.id != noteObj.id);            
+            // setTrashList(res)
+            // console.log(trashList);
+            setTrashList((prevList) => prevList.filter((ele) => ele.id !== noteObj.id));
+            
+        }
+      };
+      
+      return (
+        <>
+          <div className="grid grid-cols-4 ml-[250px] mt-[100px]">
+            {trashList.map((val: any) => (
+              <NoteCardComponent
+                data={val}
+                updatedList={() => updateNotesList(val, "remove")} 
+              />
+            ))}
+          </div>
+        </>
+      );
+      
 }
 
 export default TrashContainer;

@@ -14,29 +14,32 @@ interface NoteObj {
 
 function NotesContainer() {
   const [notesList, setNotesList] = useState<NoteObj[]>([]);
+  // const[trashList, setTrashList] = useState<NoteObj[]>([]);
 
   useEffect(() => {
     fetchNotes();
   }, []);
 
+  useEffect(() => {
+    
+  }, [notesList]);
+
   async function fetchNotes() {
     const result = await getNotes();
-    const res = result.filter((ele: any) => ele.isArchived != true && ele.isDeleted!=true);
+    const res = result.filter((ele: any) => !ele.isArchived && !ele.isDeleted);
     setNotesList(res);
   }
 
-  const updateNotesList = (noteObj: NoteObj, action: String) => {
-    if (action == "create") {
+  const updateNotesList = (noteObj: NoteObj, action: string) => {
+    if (action === "create") {
       setNotesList([...notesList, noteObj]);
-    } else if (action == "archive") {
-      let res = notesList.filter((ele) => ele.id != noteObj.noteIdList[0]);
+    } else if (action === "archive") {
+      let res = notesList.filter((ele) => ele.id !== noteObj.noteIdList[0]);
       setNotesList(res);
-    }else if (action == "Trash") { 
-        console.log(noteObj);
-        
-        let res = notesList.filter((ele) => ele.id != noteObj.noteIdList[0]);
-        setNotesList(res);
-      }
+    } else if (action === "Trash") {
+      let res = notesList.filter((ele) => ele.id !== noteObj.noteIdList[0]);
+      setNotesList(res);
+    }
   };
 
   return (

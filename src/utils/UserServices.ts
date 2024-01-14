@@ -7,7 +7,7 @@ interface UserDetails {
   service:string,
   email: string;
   password: string;
-  // Add other properties as needed
+
 }
 
 interface LoginDetails{

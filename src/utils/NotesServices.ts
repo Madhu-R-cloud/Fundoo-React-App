@@ -53,4 +53,10 @@ export const getTrashNotesList = async () => {
     const res =  await axios.get(`${REACT_APP_BASE_URL}notes/getTrashNotesList`,configForAddNotes);
     return res.data.data.data;
 }
-// getTrashNotesList
+
+
+
+export const deleteForeverNotes = async (obj:Object) => {
+
+    await axios.post(`${REACT_APP_BASE_URL}notes/deleteForeverNotes`, obj, configForGetNotes);
+}
