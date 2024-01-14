@@ -17,7 +17,7 @@ function NotesContainer() {
   
   useEffect(() => {
     fetchNotes();
-  },[ ]);
+  },[]);
 
   async function fetchNotes() {
     const result = await getNotes();
