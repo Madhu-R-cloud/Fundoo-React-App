@@ -28,10 +28,6 @@ function TrashContainer () {
 
     const updateNotesList = (noteObj: NoteObj, action: string) => {
         if (action === "remove") {
-        
-            // const res = trashList.filter((ele) => ele.id != noteObj.id);            
-            // setTrashList(res)
-            // console.log(trashList);
             setTrashList((prevList) => prevList.filter((ele) => ele.id !== noteObj.id));
             
         }
@@ -43,7 +39,8 @@ function TrashContainer () {
             {trashList.map((val: any) => (
               <NoteCardComponent
                 data={val}
-                updatedList={() => updateNotesList(val, "remove")} 
+                key={val.id}
+                updatedList={() => updateNotesList(val, "remove")}
               />
             ))}
           </div>

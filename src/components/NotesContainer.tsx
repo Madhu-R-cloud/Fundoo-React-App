@@ -14,20 +14,16 @@ interface NoteObj {
 
 function NotesContainer() {
   const [notesList, setNotesList] = useState<NoteObj[]>([]);
-  // const[trashList, setTrashList] = useState<NoteObj[]>([]);
-
+  
   useEffect(() => {
     fetchNotes();
-  }, []);
-
-  useEffect(() => {
-    
-  }, [notesList]);
+  },[ ]);
 
   async function fetchNotes() {
     const result = await getNotes();
     const res = result.filter((ele: any) => !ele.isArchived && !ele.isDeleted);
     setNotesList(res);
+    
   }
 
   const updateNotesList = (noteObj: NoteObj, action: string) => {
